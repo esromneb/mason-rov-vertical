@@ -34,6 +34,8 @@ void setup() {
   sensor.setFluidDensity(997); // kg/m^3 (freshwater, 1029 for seawater)
 }
 
+#define DEPTH_OFFSET 0.11
+
 void loop() {
   // Update pressure and temperature readings
   sensor.read();
@@ -51,7 +53,7 @@ void loop() {
   Serial.println(" deg F");
 
   Serial.print("Depth: ");
-  float depthm = sensor.depth();
+  float depthm = sensor.depth() + DEPTH_OFFSET;
   float depthf = depthm * 3.28084;
   Serial.print(depthm);
   Serial.print(" m,       ");
