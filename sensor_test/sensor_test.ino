@@ -3,6 +3,9 @@
 // blue orange stripe   scl  A5
 // purp green stripe.   sda. A4
 
+#define BUTTON_RED    9
+#define BUTTON_GREEN  8
+
 #include <Wire.h>
 #include "MS5837.h"
 
@@ -32,6 +35,9 @@ void setup() {
   //sensor.setModel(MS5837::MS5837_30BA);
 
   sensor.setFluidDensity(997); // kg/m^3 (freshwater, 1029 for seawater)
+
+  pinMode(BUTTON_RED, INPUT_PULLUP);
+  pinMode(BUTTON_GREEN, INPUT_PULLUP);
 }
 
 #define DEPTH_OFFSET 0.11
@@ -64,6 +70,16 @@ void loop() {
   Serial.print("Altitude: ");
   Serial.print(sensor.altitude());
   Serial.println(" m above mean sea level");
+
+  bool red_press = !digitalRead(BUTTON_RED);
+  bool green_press = !digitalRead(BUTTON_GREEN);
+  
+  if(red_press) {
+    Serial.println("Red Press");
+  }
+  if(green_press) {
+    Serial.println("Green Press");
+  }
 
   delay(1000);
 }
