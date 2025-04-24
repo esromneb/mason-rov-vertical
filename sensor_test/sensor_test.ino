@@ -1,10 +1,16 @@
 // yellow 3.3
 // green  gnd
-// blue orange stripe   scl  A5
-// purp green stripe.   sda. A4
+// blue orange stripe  / both brown /  scl  A5
+// purp green stripe  / both blue / sda. A4
 
 #define BUTTON_RED    9
 #define BUTTON_GREEN  8
+
+// IN METERS NOT FEET
+// set to 0, observe the depth in meters, then set
+// When this is set to 0, if depth reads negative in air, set this to the positive number it reads
+#define DEPTH_OFFSET 0.05
+
 
 #include <Wire.h>
 #include "MS5837.h"
@@ -40,7 +46,6 @@ void setup() {
   pinMode(BUTTON_GREEN, INPUT_PULLUP);
 }
 
-#define DEPTH_OFFSET 0.11
 
 void loop() {
   // Update pressure and temperature readings
