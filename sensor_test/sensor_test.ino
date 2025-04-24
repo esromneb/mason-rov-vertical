@@ -1,4 +1,7 @@
-
+// yellow 3.3
+// green  gnd
+// blue orange stripe   scl  A5
+// purp green stripe.   sda. A4
 
 #include <Wire.h>
 #include "MS5837.h"
@@ -7,7 +10,7 @@ MS5837 sensor;
 
 void setup() {
 
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   Serial.println("Starting");
 
