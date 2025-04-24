@@ -43,12 +43,21 @@ void loop() {
   Serial.println(" mbar");
 
   Serial.print("Temperature: ");
-  Serial.print(sensor.temperature());
-  Serial.println(" deg C");
+  float tempc = sensor.temperature();
+  float tempf =  (tempc * 9.0 / 5.0) + 32.0;
+  Serial.print(tempc);
+  Serial.print(" deg C,      ");
+  Serial.print(tempf);
+  Serial.println(" deg F");
 
   Serial.print("Depth: ");
-  Serial.print(sensor.depth());
-  Serial.println(" m");
+  float depthm = sensor.depth();
+  float depthf = depthm * 3.28084;
+  Serial.print(depthm);
+  Serial.print(" m,       ");
+  Serial.print(depthf);
+  Serial.println(" ft");
+
 
   Serial.print("Altitude: ");
   Serial.print(sensor.altitude());
